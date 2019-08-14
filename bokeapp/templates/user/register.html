@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+    <link href="{{ url_for('static', filename='css/main_login_register.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<div id="content">
+    <div class="form-header">
+        <img src="assets/images/logo">
+    </div>
+
+    <form  action="/register" method="post" name="register" >  {{ form.carf_token }}
+        <div class="form-input-box">
+            <span class="label label-user">
+                {{ form.username.label }}
+            </span>
+            {{ form.username}}
+        </div>
+        {% for err  in form.username.errors %}   <!--form中的错误信息-->
+             <form class="err">{{ err }}</form>
+        {% endfor %}
+
+        <div class="form-input-box">
+            <span class="label label-password">{{ form.password.label }} </span>
+            {{ form.password }}
+        </div>
+        {% for err  in form.password.errors %}   <!--form中的错误信息-->
+            <div class="err">{{ err }}</div>
+        {% endfor %}
+
+        <div class="form-input-box">
+            <span class="label label-password">{{ form.password_confirm.label }} </span>
+            {{ form.password_confirm }}
+        </div>
+        {% for err  in form.password_confirm.errors %}   <!--form中的错误信息-->
+            <div class="err">{{ err }}</div>
+        {% endfor %}
+
+        <div class="form-input-box">
+            <span class="label label-password">{{ form.email.label }} </span>
+            {{ form.email }}
+        </div>
+        {% for err  in form.email.errors %}   <!--form中的错误信息-->
+             <div class="err">{{ err }}</div>
+        {% endfor %}
+
+        <div class="form-button-box">
+            {{ form.submit}}
+
+        </div>
+    </form>
+
+    <div class="logon-box">
+        <a href="login">已有账号？login</a>
+        <a href="index">游客浏览</a>
+    </div>
+</div>
+
+</body>
+</html>

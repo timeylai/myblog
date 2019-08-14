@@ -1,0 +1,130 @@
+body{
+    background: url("../assets/images/bg_form.jpg") no-repeat fixed;
+    /* set background tensile */
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#content{
+    background-color: rgba(255, 255, 255, 0.95);
+    width: 420px;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.form-header{
+    width: 100%;
+    height: 48px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.form-header img{
+    width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.form-input-box{
+    margin-top: 12px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+}
+
+.form-input-box input{
+    width: 340px;
+    height: 32px;
+    margin-left: 18px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    padding-left: 60px;
+}
+
+.form-input-box input:hover{
+    border: 1px solid #ff7d0a;
+}
+
+.form-input-box input:after{
+    border: 1px solid #ff7d0a;
+}
+
+.form-input-box .label{
+    width: 50px;
+    height: 24px;
+    margin: 6px 4px 6px 24px;
+    display: inline-block;
+    position: absolute;
+    border-right: 1px solid #dcdcdc;
+}
+
+
+
+.form-button-box{
+    margin-top: 12px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+
+}
+
+.form-button-box input{
+    width: 400px;
+    height: 32px;
+    margin-left: 18px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.form-button-box button:hover{
+    background-color: #ee7204;
+}
+
+.form-button-box button:active{
+    background-color: #ee7204;
+}
+
+.logon-box{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.logon-box a{
+    margin: 30px;
+    color: #4a4744;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.logon-box a:hover{
+    color: #ff7d0a;
+}
+
+.logon-box a:active{
+    color: #ee7204;
+}
+
+.err{
+    margin-left: 30px;
+    font-size: 12px;
+    color: #FF0000;
+}
+.remember-box{
+    width: auto;
+    height: auto;
+    margin-left: 18px;
+    margin-top: 12px;
+    font-size: 12px;
+    color: #6a6765;
+}

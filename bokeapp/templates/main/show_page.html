@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block making_block %}
+    <ul class="t_nav_down"><span>不要轻易放弃。学习成长的路上，我们长路漫漫，只因学无止境。 </span>
+      <li><a href="/" class="n1">技术方向</a>
+          <ul class="down_content">
+              <li><a href="#" > Python项目</a></li>
+              <li><a href="#"> 前沿技术</a></li>
+          </ul>
+      </li>
+       <li><a href="/" class="n2">学科理论</a>
+          <ul class="down_content">
+              <li><a href="#" > 经济书籍</a></li>
+              <li><a href="#"> 管理书籍</a></li>
+          </ul>
+      </li>
+    </ul>
+    <div class="infos">
+        <div class="newsview">
+          <h3 class="news_title">    {{ page.title | safe }}</h3>
+          <div class="news_author"><span class="au01"><a>{{ user. username }}</a></span>
+              <span class="au02">{{ page.content_time | safe }}</span><span class="au03">阅读<b>
+                  {{ page.content_see | safe }}</b></span></div>
+          <div class="tags"><a href="/{{ page.content_keyword }}/search">{{ page.content_keyword }}</a></div>
+          <div class="news_infos"> {{ page.content | safe }}</div>
+        </div>
+        <div class="otherlink" >
+          <h2>相关文章</h2>
+          <ul>
+            {% for similar_page in page_list %}
+            <li><a href="p/{{ similar_page.page_id }}" title="{{ similar_page.title }}">{{ similar_page.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="news_pl">
+          <h2>文章评论</h2>
+          <ul>
+            <div class="gbko">
+                <form method="post" action="/{{ page.page_id }}/guestbook" >
+                  <fieldset>
+                    <div class="icon">
+                        <textarea class="message" name="GuestBook"
+                                  id="GuestBook"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        style="width: 99%;height: 250px;margin: 2px;border: 0" required></textarea>
+                    </div> ，
+                    <div>
+                        <input type="submit" value="提交评论">
+                    </div>
+                  </fieldset>
+                </form>
+                <br>
+
+                {% for guest_book in page_guest_all %}
+                   <li> <span class="blogpic"></span>
+                      <h3 class="blogtitle">{{ guest_book.guest_user }}</h3>
+                      <div class="bloginfo">
+                          <p>{{ guest_book.guest_content }}</p>
+                      </div>
+                       <div class="autor"><span class="dtime">{{ guest_book.guest_time }}</span><span class="readmore"><a ></a></span></div>
+                    </li>
+                    <br><br>
+                {% endfor %}
+
+
+            </div>
+          </ul>
+        </div>
+    </div>
+    <div class="sidebar">
+    <div class="shuji">
+      <h2 class="hometitle">点击排行</h2>
+      <ul>
+          {% for d in content_look %}
+              <ul>
+                <li><b><a href="p/{{ d['page_id'] }}" target="_blank">{{ d['title'] }}</a></b>
+                    <p><i><a  href="p/{{ d['page_id'] }}"><img src="{{ d['content_img'] }}"></a></i><a href="p/{{ d['page_id'] }}" target="_blank">{{ d['content'] }}</a></p>
+                </li>
+              </ul>
+          {% endfor %}
+      </ul>
+    </div>
+    <div class="cloud">
+      <h2 class="hometitle">标签云</h2>
+      <ul>
+        <a href="/">陌上花开</a> <a href="/">校园生活</a> <a href="/">html5</a> <a href="/">SumSung</a> <a href="/">青春</a> <a href="/">温暖</a> <a href="/">阳光</a> <a href="/">三星</a><a href="/">索尼</a> <a href="/">华维荣耀</a> <a href="/">三星</a> <a href="/">索尼</a>
+      </ul>
+    </div>
+
+    <div class="paihang">
+      <h2 class="hometitle">站长推荐</h2>
+      <ul>
+        {% for a in admin_good_page %}
+          <ul>
+            <li><b><a href="p/{{ a['page_id'] }}" target="_blank">{{ a['title'] }}</a></b>
+                <p><i><a  href="p/{{ a['page_id'] }}"><img src="{{ a['content_img'] }}"></a></i><a  href="p/{{ a['page_id'] }}" target="_blank">{{ a['content'] }}</a></p>
+            </li>
+          </ul>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </div>
+
+
+
+{% endblock %}

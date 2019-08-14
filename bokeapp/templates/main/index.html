@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block making_block %}
+    <div class="picshow">
+  <ul>
+    <li><a href="/"><i><img src="../../static/images/other/b01.jpg"></i>
+      <div class="font">
+        <h3>个人博客模板《早安》</h3>
+      </div>
+      </a></li>
+    <li><a href="/"><i><img src="../../static/images/other/b02.jpg"></i>
+      <div class="font">
+        <h3>个人博客模板《早安》</h3>
+      </div>
+      </a></li>
+    <li><a href="/"><i><img src="../../static/images/other/b03.jpg"></i>
+      <div class="font">
+        <h3>个人博客模板《早安》</h3>
+      </div>
+      </a></li>
+    <li><a href="/"><i><img src="../../static/images/other/b04.jpg"></i>
+      <div class="font">
+        <h3>个人博客模板《早安》</h3>
+      </div>
+      </a></li>
+    <li><a href="/"><i><img src="../../static/images/other/b05.jpg"></i>
+      <div class="font">
+        <h3>个人博客模板《早安》</h3>
+      </div>
+      </a></li>
+  </ul>
+</div>
+    <article>
+  <div class="blogs">
+      {% for i in page_list%}
+    <li> <span class="blogpic"><a href="p/{{ i['page_id'] }}"><img src="{{ i['content_img'] }}"></a></span>
+      <h3 class="blogtitle"><a href="p/{{ i['page_id'] }}" target="_blank">{{ i['title'] }}</a></h3>
+      <div class="bloginfo">
+          <p><a href="p/{{ i['page_id'] }}"  target="_blank">{{ i['content'] }}</a></p>
+      </div>
+      <div class="autor"><span class="lm"><a class="classname">xx</a></span><span class="dtime">{{ i['time'] }}</span><span class="viewnum">浏览（{{ i['see'] }}）</span><span class="readmore"><a href="p/{{ i['page_id'] }}" target="_blank">阅读原文</a></span></div>
+    </li>
+      {% endfor %}
+
+  </div>
+
+  <div class="sidebar">
+    <div class="search">
+      <form action="{{ url_for('main.search') }}" method="post" name="searchform" id="searchform">
+        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字"
+               style="color: rgb(153, 153, 153);"
+               onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}"
+               onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
+
+        <input name="Submit" class="input_submit" value="搜索" type="submit">
+      </form>
+    </div>
+
+    <div class="paihang">
+      <h2 class="hometitle">站长推荐</h2>
+        {% for a in admin_good_page %}
+        <ul>
+        <li><b><a href="p/{{ a['page_id'] }}" target="_blank">{{ a['title'] }}</a></b>
+            <p><i><a  href="p/{{ a['page_id'] }}"><img src="{{ a['content_img'] }}"></a></i><a  href="p/{{ a['page_id'] }}" target="_blank">{{ a['content'] }}</a></p>
+        </li>
+      </ul>
+        {% endfor %}
+    </div>
+    <div class="paihang">
+      <h2 class="hometitle">点击排行</h2>
+        {% for d in content_look %}
+      <ul>
+        <li><b><a href="p/{{ d['page_id'] }}" target="_blank">{{ d['title'] }}</a></b>
+            <p><i><a  href="p/{{ d['page_id'] }}"><img src="{{ d['content_img'] }}"></a></i><a href="p/{{ d['page_id'] }}" target="_blank">{{ d['content'] }}</a></p>
+        </li>
+      </ul>
+        {% endfor %}
+    </div>
+    <div class="cloud">
+      <h2 class="hometitle">标签云</h2>
+      <ul>
+          <a href="/">陌上花开</a>
+          <a href="/">校园生活</a>
+          <a href="/">html5</a>
+          <a href="/">SumSung</a>
+          <a href="/">青春</a>
+          <a href="/">温暖</a>
+          <a href="/">阳光</a>
+          <a href="/">三星</a>
+          <a href="/">索尼</a>
+          <a href="/">华维荣耀</a>
+          <a href="/">三星</a>
+          <a href="/">索尼</a>
+      </ul>
+    </div>
+
+
+    <div class="links">
+      <h2 class="hometitle">友情链接</h2>
+      <ul>
+        <li><a href="#" title="timey">timey</a></li>
+        <li><a href="#" title="杨青个人博客">xxx博主</a></li>
+        <li><a href="#" title="杨青个人博客">xxx博主</a></li>
+      </ul>
+    </div>
+    <div class="weixin">
+      <h2 class="hometitle">联系探讨</h2>
+      <ul>
+          <img src="../../static/images/other/wx.jpg" >
+      </ul>
+    </div>
+  </div>
+</article>
+{% endblock %}
+{% block js %}
+    <script src="{{ url_for('static', filename='js/LazyLoading.js') }}"  charset="UTF-8"></script>
+{% endblock %}

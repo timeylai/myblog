@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+{% block title %}<title>分享平台</title>{% endblock %}
+{% block head %}
+
+<title>咸鱼谈管理后台</title>
+
+<script>
+window.onload = function ()
+{
+	var oH2 = document.getElementsByTagName("h2")[0];
+	var oUl = document.getElementsByTagName("ul")[0];
+	oH2.onclick = function ()
+	{
+		var style = oUl.style;
+		style.display = style.display == "block" ? "none" : "block";
+		oH2.className = style.display == "block" ? "open" : ""
+	}
+}
+</script>
+{% endblock %}
+
+<body>
+<header>
+  <div class="tophead">
+    <div class="logo"><a href="/">咸坛（又咸又有梦）</a></div>
+    <div id="mnav">  <!--移动端导航-->
+      <h2><span class="navicon"></span></h2>
+      <ul class="first-list">
+        <li><a href="{{ url_for('main.index') }}">网站首页</a></li>
+         <li><a href="{{ url_for('main.share') }}">职场tool</a></li>
+        <li><a href="{{ url_for('main.collect') }}">前沿方向</a></li>
+        <li><a href="#">生活黑洞</a></li>
+        <li><a href="{{ url_for('main.word') }}">留言管理</a></li>
+          <li>
+             {% if  current_user.is_authenticated %}  <!--if 判断选择 -->
+                 <i class="fa fa-user" aria-hidden="true" ></i>&nbsp;
+                 <a href="{{ url_for('auth.user_info') }}" > {{ current_user.username }}</a>
+             {% else %}
+                 <a  href="{{ url_for('main.login') }}"><i class="fa fa-user" aria-hidden="true" ></i>&nbsp; 加入团队</a>
+             {% endif %}
+         </li>
+      </ul>
+    </div>
+
+    <nav class="topnav" id="topnav">  <!--PC端导航-->
+     <ul class="first-list">
+        <li><a href="{{ url_for('main.index') }}">网站首页</a></li>
+        <li><a href="{{ url_for('main.share') }}">职场tool</a></li>
+        <li><a href="{{ url_for('main.collect') }}">前沿方向</a></li>
+        <li><a href="#">生活黑洞</a></li>
+        <li><a href="{{ url_for('main.word') }}">留言管理</a></li>
+        <li>
+             {% if  current_user.is_authenticated %}  <!--if 判断选择 -->
+                 <i class="fa fa-user" aria-hidden="true" ></i>&nbsp;
+                 <a href="{{ url_for('auth.user_info') }}" > {{ current_user.username }}</a>
+             {% else %}
+                 <a  href="{{ url_for('main.login') }}"><i class="fa fa-user" aria-hidden="true" ></i>&nbsp; 加入团队</a>
+             {% endif %}
+
+         </li>
+      </ul>
+    </nav>
+  </div>
+</header>  <!--公共导航栏-->
+
+{% block making_block %}
+{% endblock %}
+
+<div class="blank"></div>
+<footer>
+  <p>Design by timey <a href="/">闲台</a> <a href="/">蜀ICP备11002373号-1</a></p>
+</footer>
+
+<script src="{{ url_for('static', filename='js/nav.js') }}" ></script>
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+{% block js %}
+{% endblock %}
+</body>

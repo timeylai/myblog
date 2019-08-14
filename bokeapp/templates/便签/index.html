@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>layer组件轻松实现留言墙</title>
+</head>
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+html,body{_overflow-y:auto;font-size:12px;background:#E3E3E3;}
+/* liuyan */
+.liuyan{height:1000px;width:900px;margin:0 auto;position:relative;}
+.liuyan .ly_list{width:180px;box-shadow:0px 0px 20px #333;position:relative;display:none;;}
+.ly_list .ly_titleBg{width:120px;height:40px;background:#000;left:30px;opacity:0.55;filter:alpha(opacity=55);position:absolute;top:-20px;}
+.ly_list .ly_titleTxt{width:160px;height:40px;cursor:move;color:#fff;padding:0 10px;line-height:40px;left:30px;position:absolute;top:-20px;}
+.yellow{background:#FFFFCC;-webkit-transform:rotate(10deg) translateZ(0);-moz-transform:rotate(10deg) translateZ(0);}
+.green{background:#CCFFCC;-webkit-transform:rotate(-10deg) translateZ(0);-moz-transform:rotate(-10deg) translateZ(0);}
+.blue{background:#C6C6F8;-webkit-transform:rotate(15deg) translateZ(0);-moz-transform:rotate(15deg) translateZ(0);}
+.color4{background:#D1D1CE;-webkit-transform:rotate(-15deg) translateZ(0);-moz-transform:rotate(-15deg) translateZ(0);}
+.ly_list .ly_content{padding:30px 10px 10px;}
+.ly_content p{text-indent:1.5em;}
+</style>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/layer.min.js"></script>
+
+<body>
+<ul class="liuyan">
+    <li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">admin：</div>
+        <div class="ly_content"><p>灵活运用layer的参数，可轻松地实现很多效果</p><p><a href="http://sentsin.com/jquery/layer/" target="_blank">返回layer官网</a></p></div>
+    </li>
+    <li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">贤心：</div>
+        <div class="ly_content"><p>希望layer能够帮助大家解决更多问题。</p><p>好吧，这个留言墙已经被广告占领了。需要在此发广告的联系我</p></div>
+    </li>
+    <li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">回头是爱：</div>
+            <div class="ly_content">
+				<p>我爱好很广，只是目前还单身，真诚求妹纸一枚？ 联系qq：1597053395</p>
+			</div>
+    </li>
+    <li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">宇天：</div>
+            <div class="ly_content"><p>hello，欢迎大家来我的blog：http://yutent.com。另外出售vps</p></div>
+    </li>
+    <li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">老婆：</div>
+            <div class="ly_content"><p style="font-size:50px;">我</p></div>
+    </li>
+    <li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">初恋：</div>
+        <div class="ly_content"><p style="font-size:50px;">爱</p></div>
+    </li>
+    <li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">情人：</div>
+            <div class="ly_content"><p style="font-size:50px;">你</p></div>
+    </li>
+    <li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">妻子：</div>
+            <div class="ly_content"><p>爱情的美满是所有幸福的基础。</p></div>
+    </li>
+    <li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">关于layer：</div>
+            <div class="ly_content"><p>layer作为一种web弹层解决方案，最早发布于2012年6月6号，短短一年间，已经赢得了上万名web开发者所青睐。</p></div>
+    </li>
+    <li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">前端开发：</div>
+            <div class="ly_content"><p>前端开发曾是计算机领域最具有争议的工种之一，但经过一批人多年的努力，目前已经赫然成为一种重量级职业，它以html、css、javascript为基础语言，致力于提供更人性化的交互体验，是当今互联网产品血拼的重要领域</p></div>
+    </li>
+    <li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">NodeJs：</div>
+            <div class="ly_content"><p>用来编写高性能的服务端javascript工具集，它使得前端开发有了更开阔的领域！</p></div>
+    </li>
+    <li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">贤心：</div>
+            <div class="ly_content"><p>水火因独有的特性而彼此吸引，然而却难以共存，因为大自然早已对他们赋予了永恒的公式：水火不容。于是他们选择了另一种平衡：遗忘。</p></div>
+    </li>
+	
+	<li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">贤心：</div>
+            <div class="ly_content"><p>傍晚漫步西湖，突然迎来一场雨，只见众人仓促，而我淡坐在石椅，心中默念：太不懂得感受天公之美了，少年们！</p></div>
+    </li>
+    <li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">凤凰网：</div>
+            <div class="ly_content"><p>曾经倍受关注，大步前进，红极一时…来，舞台之上，一出红色的独唱；去，看台之下，一个惨淡的收场。</p></div>
+    </li>
+    <li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">only：</div>
+            <div class="ly_content"><p>每一个技术人员都会有一个单纯的过去，那时的他们，会为偶像精堪的代码而着迷，心中默默地树立起一个又一个标杆。直到他们从业多年，才发现神坛这个东西是始终在变换的。你还拥有他们，说明你正当年轻。</p></div>
+    </li>
+    <li class="ly_list">
+        <div class="ly_titleBg"></div><div class="ly_titleTxt">Chengguan：</div>
+            <div class="ly_content"><p>Chengguan is the best fighter and I don't think you can beat them</p></div>
+    </li>
+</ul>
+<!-----------------  此处代码可以无视  ----------------->
+<div class="layer_code">
+<pre id="liu">
+/************************
+ * 基于layer组件的留言墙
+ * 2012.10.13
+ * By 贤心
+ ***********************/
+
+!function(L){
+
+var LYQ = {line: 4, width: 180};
+LYQ._class = ['yellow' , 'green' , 'blue', 'color4'];
+
+LYQ.view = function(index, value, othis){
+	var nos = Math.floor(Math.random()*4), left ,fade;
+	L(othis).addClass(this._class[nos]);
+	L.layer({
+		type : 1,
+		page : {dom : othis},
+		fix : false,
+		area : ['180px', 'auto'],
+		offset : ['100px','260px'],
+		zIndex: layer.zIndex,
+		move : ['.ly_titleTxt' , true],
+		shade : [0],
+		bgcolor: '',
+		title : false,
+		closeBtn : false,
+		border : [0],
+		success : function(layerE){
+			var _e = Math.ceil((index+1)/LYQ.line) - 1 , time ,  lLen = L('.xubox_layer').length;
+			if(index > (LYQ.line-1)){
+				var left = 50+LYQ.width*(index-LYQ.line*_e) , extop, nlayer = L('.xubox_layer').eq(index-LYQ.line);
+				!-[1,] ? extop = nlayer.offset().top + 30 : extop = 20*_e + 100*_e;
+				var top = nlayer.outerHeight() + extop;
+			}else{
+				var left = 50+LYQ.width*index;
+			}
+			!-[1,] ? time = 0 : 500;
+			var mate = {left : left , top : top , marginLeft : 0};
+			if(!-[1,]){
+				layerE.hide().animate(mate , time);
+				index === lLen - 1 && layerE.show();
+			}else{
+				layerE.animate(mate , time);
+			}
+			layer.setTop(layerE);
+		}
+	});
+};
+
+LYQ.run = function(){
+	var li = L('.liuyan>li');
+	L.each(li, function(index,value){
+		LYQ.view(index, value, this);
+	});
+};
+
+
+if(-[1,]){
+	LYQ.run();
+}else{
+	layer.ready(function(){
+		layer.msg('IE浏览器查看效果将会不佳    您可以选择chrome或者firefox等浏览器访问该页面', 2, 13, function(){
+        	layer.msg('您可以选择chrome或者firefox等浏览器访问该页面', 2, 8, function(){
+            LYQ.run();
+            });
+
+		});
+	});
+}
+
+L('.layer_code').code();
+
+
+}($);
+</pre>
+</div>
+
+<script type="text/javascript" src="js/code.min.js"></script>
+<script type="text/javascript">
+new Function($('#liu').text())();
+</script>
+
+
+</body>
+</html>

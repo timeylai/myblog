@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block making_block %}
+<article>
+  <ul class="t_nav_down"><span>随便看看，随便翻翻 </span>
+      <li><a class="n1">what's play</a>
+          <ul class="down_content">
+              <li><a href="/workplace/PythonProject" > Python项目</a></li>
+              <li><a href="/workplace/DirectionSkill"> 前沿技术</a></li>
+          </ul>
+      </li>
+       <li><a  class="n2">what's see</a>
+          <ul class="down_content">
+              <li><a href="/workplace/economic" > economic</a></li>
+              <li><a href="/workplace/TeamManage"> team manage</a></li>
+          </ul>
+      </li>
+  </ul>
+  <div class="blogs">
+    <div class="mt20"></div>
+      {% for i in page_list%}
+    <li> <span class="blogpic"><a href="p/{{ i['page_id'] }}"><img src="{{ i['content_img'] }}"></a></span>
+      <h3 class="blogtitle"><a href="p/{{ i['page_id'] }}" target="_blank">{{ i['title'] }}</a></h3>
+      <div class="bloginfo">
+          <p><a href="p/{{ i['page_id'] }}"  target="_blank">{{ i['content'] }}</a></p>
+      </div>
+      <div class="autor"><span class="lm"><a class="classname">xx</a></span><span class="dtime">{{ i['time'] }}</span><span class="viewnum">浏览（{{ i['see'] }}）</span><span class="readmore"><a href="p/{{ i['page_id'] }}" target="_blank">阅读原文</a></span></div>
+    </li>
+      {% endfor %}
+  </div>
+  <div class="sidebar">
+    <div class="shuji">
+      <h2 class="hometitle">书籍收藏</h2>
+      <ul>
+        <li><b><a href="/download/div/2015-04-10/746.html" target="_blank">【活动作品】柠檬绿兔小白个人博客模板30...</a></b>
+          <p><i><img src="../../static/images/other/t02.jpg"></i>展示的是首页html，博客页面布局格式简单，没有复杂的背景，色彩局部点缀，动态的幻灯片展示，切换卡，标...</p>
+        </li>
+        <li><b><a href="/download/div/2014-02-19/649.html" target="_blank"> 个人博客模板（2014草根寻梦）30...</a></b>
+          <p><i><img src="../../static/images/other/b03.jpg"></i>2014第一版《草根寻梦》个人博客模板简单、优雅、稳重、大气、低调。专为年轻有志向却又低调的草根站长设...</p>
+        </li>
+        <li><b><a href="/download/div/2013-08-08/571.html" target="_blank">黑色质感时间轴html5个人博客模板30...</a></b>
+          <p><i><img src="../../static/images/other/b04.jpg"></i>黑色时间轴html5个人博客模板颜色以黑色为主色，添加了彩色作为网页的一个亮点，导航高亮显示、banner图片...</p>
+        </li>
+      </ul>
+    </div>
+    <div class="paihang">
+      <h2 class="hometitle">站长推荐</h2>
+        {% for a in admin_good_page %}
+        <ul>
+        <li><b><a href="p/{{ a['page_id'] }}" target="_blank">{{ a['title'] }}</a></b>
+            <p><i><a  href="p/{{ a['page_id'] }}"><img src="{{ a['content_img'] }}"></a></i><a  href="p/{{ a['page_id'] }}" target="_blank">{{ a['content'] }}</a></p>
+        </li>
+      </ul>
+        {% endfor %}
+    </div>
+  </div>
+</article>
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/LazyLoadingType.js') }}"  charset="UTF-8"></script>
+{% endblock %}

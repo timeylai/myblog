@@ -1,0 +1,55 @@
+1、前端属性 class  .    id #
+2、login_user 登陆已经封装cookie  获取用request.cookie.get
+3、User model需要继承UserMixin ,调用user.字段模块(方法)
+4、路由url 打开定向到 return...
+
+
+服务器搭建：
+apt-get install openssh-server  （xshell管理）
+apt-get install mysql-server
+apt-get install python3-pip
+pip install:
+# virtualenv (-p /usr/bin/版本号)ven 创建虚拟python环境  ，虚拟环境搭建版本选择
+    若出现镜像错误 vim ~/.pip/pip.conf 更改global 的镜像路径
+bin 目录下 source activate（退出：deactivate)
+pip install -r requirements.txt
+
+
+测试test：
+Linux python manage.py runserver 0.0.0.0:8000
+本地打开 ip:8000
+
+
+nginx搭建
+sudo apt-get install nginx
+* 默认配置 不在nginx.conf  注意include导入情况
+启动： service nginx start stop restart (source 是路径更改编辑环境的）——
+修改 ip 为 0.0.0.0 测试nginx 是否按照成功
+
+
+# 同时打开多个终端，提高搭建效率
+nginx（反向代理) + wsgi（自带的服务器） + uwsgi(网络协议接口，配置相关信息都在这) 搭建服务器
+进行虚拟环境安装 1、pip3 install uwsgi
+2、项目目录下（touch）创建uwsgi.ini 配置  # 此时的IP是项目运行的本地ip
+    配置内容：
+
+
+
+3、重启uwsgi(可以直接用ip使用)
+    启动uwsgi.ini,需要切换到项目目录
+    启动uwsgi： uwsgi --ini  uwsgi.ini
+    查看uwsgi进程：ps ajx|grep uwsgi
+
+
+4、nginx 配置 (uwsgi的配置IP 转到 nginx server_name：listen ）
+    nginx.conf 查看include, 进行对应位置的搭建
+    server {
+    }
+    1、注意点uswgi的IP与nginx server 是否一致，接口不对
+    2、 负载均衡，一个80端口多个ip衍射，进行轮值
+    注意查看error.log
+
+        错误，：数字，某行配置错误
+    3、多个server 配置，第二个server出现welcome,请删除w elcome的相关配置，include
+
+

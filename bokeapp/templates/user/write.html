@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block making_block %}
+<article>
+  <h1 class="t_nav"><span>客观来了？那写个文章啰嗦啰嗦几下？</span>
+      <a href="{{ url_for('auth.user_info') }}" class="n1">个人信息</a><a href="{{ url_for('auth.write_page') }}" class="n2">写文章</a></h1>
+  <div class="ab_box">
+      <div class="leftbox">
+      <div class="aboutme"><h2 class="hometitle">草稿箱</h2></div>
+      <ul class="caogao">
+           <li><a href="#"> 草稿箱一 </a></li>
+           <li><a href="#"> 草稿箱二 </a></li>
+           <li><a href="#"> 草稿箱三 </a></li>
+      </ul>
+      </div>
+      <div class="rightbox">
+      <form action="{{ url_for('auth.write_page') }}" method="post" enctype="multipart/form-data">
+          {{ form.title.label }} {{ form.title }}
+          <div class="ckestyle"  >
+                {{ form.body.label }}  <br> &nbsp;
+             {{ form.body }}</div>
+          <div class="sumbit"> {{ form.submit }} </div>
+      </form>
+      </div>
+  </div>
+</article>
+{% endblock %}
+
+{% block js %}
+    <script src="{{ url_for('static', filename='ckeditor/ckeditor.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/localsave.js') }}" ></script>
+    <script type="text/javascript">
+           CKEDITOR.replace('writebody', { height: '800px' }); //  '' is id
+    </script>
+{% endblock %}

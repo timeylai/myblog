@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆login</title>
+    <link href="{{ url_for('static', filename='css/main_login_register.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<div id="content">
+    <div class="form-header">
+        <img src="assets/images/logo">
+    </div>
+    <form method="POST"  action="/" >
+        {{ form.carf_token }}
+        <div class="form-input-box">
+            <span class="label label-user">
+                {{ form.username.label }}
+            </span>
+            {{ form.username }}
+        </div>
+        <div class="form-input-box">
+            <span class="label label-password">{{ form.password.label }} </span>
+            {{ form.password }}
+        </div>
+
+        {% for  msg in get_flashed_messages() %} <!-- views flask 提示-->
+             <div class="err">{{ msg }}</div>
+        {% endfor %}
+        <div class="remember-box">
+            <label>
+                <input type="checkbox">&nbsp;Remember Me
+            </label>
+        </div>
+        <div class="form-button-box">
+            {{ form.submit }}
+        </div>
+    </form>
+    <div class="logon-box">
+        <a href="/register">账号注册?register</a>
+        <a href="#">忘记密码？找回</a>
+    </div>
+</div>
+
+</body>
+</html>
